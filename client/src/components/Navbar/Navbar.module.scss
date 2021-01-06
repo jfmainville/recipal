@@ -1,0 +1,55 @@
+@import "../../sass/variables";
+
+.Logo {
+  display: flex;
+  align-items: center;
+  font-family: $logo-font-family;
+  font-size: $logo-font-size;
+  padding-bottom: 1rem;
+  margin-left: 1rem;
+  letter-spacing: 2px;
+  color: $color-white;
+}
+
+.Logout {
+  display: flex;
+
+  .NavigationItemLink {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: $color-white;
+    padding: 0 1rem 0 1rem;
+    height: 100%;
+
+    &:hover {
+      display: flex;
+      align-items: center;
+      color: $color-primary;
+      background-color: $color-white;
+
+      .Icon {
+        fill: $color-primary;
+      }
+    }
+
+    .Icon {
+      width: 2rem;
+      height: 2rem;
+      padding: 0.5rem;
+      fill: $color-white;
+      background-color: transparent;
+    }
+  }
+
+  .NavigationItemLinkActive {
+    display: flex;
+    align-items: center;
+    color: $color-primary;
+    background-color: $color-white;
+
+    .Icon {
+      fill: $color-primary;
+    }
+  }
+}

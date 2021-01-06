@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipal-client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipal-client
+  template:
+    metadata:
+      labels:
+        app: recipal-client
+    spec:
+      containers:
+        - name: recipal-client
+          image: registry.digitalocean.com/docrnuagirprod/recipal-client:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
+      imagePullSecrets:
+        - name: docrnuagirprod

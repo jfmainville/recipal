@@ -1,0 +1,47 @@
+@import "../../sass/_variables";
+@import "../../sass/_mixins";
+
+.Container {
+  max-height: 100vh;
+  background-color: $color-white;
+
+  .Navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: $color-primary;
+    box-shadow: $box-shadow-bottom;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+  }
+
+  .Row {
+    display: flex;
+    flex-direction: row;
+
+    .Sidebar {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      min-width: 25rem;
+      background-color: $color-green;
+      box-shadow: $box-shadow-right;
+      font-family: $default-font-family;
+      font-size: $default-font-size;
+    }
+
+    @include respond(tab-portrait) {
+      .Sidebar {
+        min-width: 5rem;
+      }
+    }
+
+    .Content {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      min-height: 100vh;
+      flex: 1 0;
+    }
+  }
+}

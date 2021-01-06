@@ -1,0 +1,33 @@
+name: Client
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Build the client docker image
+        run: docker build ./client --file ./client/Dockerfile --tag ${{ secrets.DOCR_URL }}/recipal-client:latest --tag ${{ secrets.DOCR_URL }}/recipal-client:${{ github.sha }}
+      - name: Log in to DigitalOcean Container Registry
+        run: doctl registry login --expiry-seconds 600
+      - name: Push the client docker latest image
+        run: docker push ${{ secrets.DOCR_URL }}/recipal-client:latest
+      - name: Push the client docker commit SHA image
+        run: docker push ${{ secrets.DOCR_URL }}/recipal-client:${{ github.sha }}
+      - name: Save DigitalOcean kubeconfig
+        run: doctl kubernetes cluster kubeconfig save ${{ secrets.DIGITALOCEAN_DOKS_NAME }}
+      - name: Set the Kubernetes context
+        uses: azure/k8s-set-context@v1
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.DIGITALOCEAN_DOKS_KUBECONFIG }}
+        id: set-context
+      - name: Deploy the Kubernetes components
+        run: kubectl apply -f kubernetes
+      - name: Create the client deployment
+        run: kubectl set image deployments/recipal-client-deployment recipal-client=${{ secrets.DOCR_URL }}/recipal-client:${{ github.sha }} --record
