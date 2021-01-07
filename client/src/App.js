@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.module.scss";
 import Layout from "./hoc/Layout/Layout";
+import RecipePanel from "./components/RecipePanel/RecipePanel";
 
 class App extends Component {
 	render () {
@@ -11,7 +12,9 @@ class App extends Component {
 					exact
 					path="/"
 					render={() => (
-						<Layout/>
+						<Layout>
+							<RecipePanel/>
+						</Layout>
 					)}
 				/>
 			</Switch>

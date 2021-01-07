@@ -1,0 +1,16 @@
+@import "../../sass/_variables";
+
+.RecipeFilter {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: red;
+}
+
+.RecipeCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 3;
+  background-color: blue;
+}
