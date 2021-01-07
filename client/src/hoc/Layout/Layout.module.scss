@@ -7,7 +7,7 @@
   .Navbar {
     display: flex;
     justify-content: space-between;
-    height: 5rem;
+    flex-wrap: wrap;
     background-color: $color-primary;
     box-shadow: $box-shadow-bottom;
     font-family: $default-font-family;
