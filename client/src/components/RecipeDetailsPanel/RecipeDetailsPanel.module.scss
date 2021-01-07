@@ -1,0 +1,12 @@
+@import "../../sass/variables";
+
+.RecipeDetailsPanel {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+
+  h1 {
+    font-family: $default-font-family;
+    font-size: 36px;
+  }
+}

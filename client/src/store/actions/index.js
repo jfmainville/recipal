@@ -1,5 +1,6 @@
 export {
 	fetchRecipes,
+	fetchRecipeDetails,
 	createRecipe,
 	updateRecipe,
 	deleteRecipe

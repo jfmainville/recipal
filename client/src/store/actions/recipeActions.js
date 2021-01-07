@@ -22,6 +22,28 @@ export function fetchRecipesFail (bool) {
 	};
 }
 
+export function fetchRecipeDetailsLoad (bool) {
+	return {
+		type: actionTypes.FETCH_RECIPE_DETAILS_LOAD,
+		loading: bool
+	};
+}
+
+export function fetchRecipeDetailsSuccess (data, recipe_id) {
+	return {
+		type: actionTypes.FETCH_RECIPE_DETAILS_SUCCESS,
+		recipes: data,
+		recipeDetailsId: parseInt(recipe_id)
+	};
+}
+
+export function fetchRecipeDetailsFail (bool) {
+	return {
+		type: actionTypes.FETCH_RECIPE_DETAILS_FAIL,
+		error: bool
+	};
+}
+
 export function createRecipeLoad (bool) {
 	return {
 		type: actionTypes.CREATE_RECIPE_LOAD,
@@ -88,6 +110,12 @@ export function deleteRecipeFail (bool) {
 export function fetchRecipes () {
 	return dispatch => {
 		dispatch(fetchRecipesSuccess(dummyRecipes));
+	};
+}
+
+export function fetchRecipeDetails (recipe_id) {
+	return dispatch => {
+		dispatch(fetchRecipeDetailsSuccess(dummyRecipes, recipe_id));
 	};
 }
 

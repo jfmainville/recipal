@@ -20,6 +20,21 @@ const fetchRecipesFail = (state, action) => {
 	return updateObject(state, { error: action.error });
 };
 
+const fetchRecipeDetailsLoad = (state, action) => {
+	return updateObject(state, { loading: action.loading });
+};
+
+const fetchRecipeDetailsSuccess = (state, action) => {
+	const recipes = action.recipes;
+	const recipeDetailsId = action.recipeDetailsId;
+	const recipeDetails = recipes.filter(recipe => recipe.id === recipeDetailsId);
+	return updateObject(state, { recipes: recipeDetails });
+};
+
+const fetchRecipeDetailsFail = (state, action) => {
+	return updateObject(state, { error: action.error });
+};
+
 const createRecipeLoad = (state, action) => {
 	return updateObject(state, { loading: action.loading });
 };
@@ -75,6 +90,12 @@ const recipeReducer = (state = initialState, action) => {
 			return fetchRecipesSuccess(state, action);
 		case actionTypes.FETCH_RECIPES_FAIL:
 			return fetchRecipesFail(state, action);
+		case actionTypes.FETCH_RECIPE_DETAILS_LOAD:
+			return fetchRecipeDetailsLoad(state, action);
+		case actionTypes.FETCH_RECIPE_DETAILS_SUCCESS:
+			return fetchRecipeDetailsSuccess(state, action);
+		case actionTypes.FETCH_RECIPE_DETAILS_FAIL:
+			return fetchRecipeDetailsFail(state, action);
 		case actionTypes.CREATE_RECIPE_LOAD:
 			return createRecipeLoad(state, action);
 		case actionTypes.CREATE_RECIPE_SUCCESS:
