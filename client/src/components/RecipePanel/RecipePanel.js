@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions/index";
 import classes from "./RecipePanel.module.scss";
 import RecipeFilter from "./RecipeFilter/RecipeFilter";
+import RecipeCard from "./RecipeCard/RecipeCard";
 
 const RecipePanel = () => {
 	const recipes = useSelector(state => state.recipe.recipes);
@@ -18,13 +19,11 @@ const RecipePanel = () => {
 				<RecipeFilter/>
 			</div>
 			<div className={classes.RecipeCard}>
-				{recipes.map((recipe, index) => (
-					<div key={index}>
-						<div className={classes.RecipeCardImage}>
-							<img alt={recipe.name} width="200px" height="200px" src={`data:image/jpeg;base64,${recipe.image}`}/>
-						</div>
-						{recipe.name}
-					</div>
+				{recipes.map(recipe => (
+					<RecipeCard
+						key={recipe.id}
+						recipe={recipe}
+					/>
 				))}
 			</div>
 		</React.Fragment>
