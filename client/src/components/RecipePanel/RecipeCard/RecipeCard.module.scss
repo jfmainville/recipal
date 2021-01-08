@@ -8,6 +8,17 @@
   box-shadow: $box-shadow-all;
   cursor: pointer;
 
+  .NavigationItemLink {
+    display: flex;
+    color: $color-white;
+  }
+
+  .NavigationItemLinkActive {
+    display: flex;
+    align-items: center;
+    color: $color-white;
+  }
+
   .RecipeCardInformation {
     display: flex;
     justify-content: space-between;
