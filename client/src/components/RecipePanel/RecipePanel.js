@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "../../store/actions/index";
 import classes from "./RecipePanel.module.scss";
-import RecipeFilter from "./RecipeFilter/RecipeFilter";
 import RecipeCard from "./RecipeCard/RecipeCard";
 
 const RecipePanel = () => {
@@ -15,9 +14,6 @@ const RecipePanel = () => {
 
 	return (
 		<React.Fragment>
-			<div className={classes.RecipeFilter}>
-				<RecipeFilter/>
-			</div>
 			<div className={classes.RecipeCard}>
 				{recipes.map(recipe => (
 					<RecipeCard
