@@ -12,6 +12,14 @@ const RecipePanel = () => {
 		dispatch(actions.fetchRecipes());
 	}, []);
 
+	const handleDeleteRecipe = (recipe) => {
+		let data = {};
+		if (recipe.id) {
+			data = recipe.id;
+			dispatch(actions.deleteRecipe(data));
+		}
+	};
+
 	return (
 		<React.Fragment>
 			<div className={classes.RecipeCard}>
@@ -19,6 +27,7 @@ const RecipePanel = () => {
 					<RecipeCard
 						key={recipe.id}
 						recipe={recipe}
+						handleDeleteRecipe={handleDeleteRecipe}
 					/>
 				))}
 			</div>
