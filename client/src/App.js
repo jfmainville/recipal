@@ -4,6 +4,7 @@ import "./App.module.scss";
 import Layout from "./hoc/Layout/Layout";
 import RecipePanel from "./components/RecipePanel/RecipePanel";
 import RecipeDetailsPanel from "./components/RecipeDetailsPanel/RecipeDetailsPanel";
+import NewRecipePanel from "./components/NewRecipePanel/NewRecipePanel";
 
 class App extends Component {
 	render () {
@@ -19,6 +20,15 @@ class App extends Component {
 					)}
 				/>
 				<Route
+					exact
+					path="/new"
+					render={() => (
+						<Layout>
+							<NewRecipePanel/>
+						</Layout>
+					)}
+				/>
+				<Route
 					path="/:recipe_id"
 					render={() => (
 						<Layout>
@@ -26,6 +36,7 @@ class App extends Component {
 						</Layout>
 					)}
 				/>
+
 			</Switch>
 		);
 	}
