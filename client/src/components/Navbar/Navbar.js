@@ -24,7 +24,16 @@ const navbar = () => {
 					buttonText="Search"
 				/>
 			</form>
-			<div className={classes.Logout}>
+			<div className={classes.Navigation}>
+				<NavLink
+					activeClassName={classes.NavigationItemLinkActive}
+					className={classes.NavigationItemLink}
+					to={"/new"}
+				>
+					<svg className={classes.Icon}>
+						<use xlinkHref="/assets/sprite.svg#icon-plus"/>
+					</svg>
+				</NavLink>
 				<NavLink
 					activeClassName={classes.NavigationItemLinkActive}
 					className={classes.NavigationItemLink}
