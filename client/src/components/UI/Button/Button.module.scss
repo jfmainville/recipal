@@ -18,5 +18,6 @@
   &:hover {
     color: $color-secondary;
     background-color: $color-white;
+    border: 1px solid $color-secondary;
   }
 }
