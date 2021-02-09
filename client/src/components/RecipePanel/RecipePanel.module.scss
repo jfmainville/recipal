@@ -5,4 +5,35 @@
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 2;
+
+  .RecipeAddButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 20rem;
+    height: 20rem;
+    margin-left: 2rem;
+    border: 1px solid $color-green;
+    background-color: transparent;
+    outline: none;
+
+    &:hover {
+      background-color: $color-green;
+    }
+
+    .RecipeAddIcon {
+      width: 20rem;
+      height: 20rem;
+      padding: 0.5rem;
+      fill: $color-green;
+      background-color: transparent;
+
+      &:hover {
+        fill: $color-white;
+      }
+    }
+
+
+  }
 }
