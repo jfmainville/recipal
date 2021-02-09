@@ -11,7 +11,7 @@ const Modal = props => {
 				/>
 				<div className={classes.Container}>
 					<div>
-						<button onClick={props.handleShowModal}>X</button>
+						<button className={classes.ModalClose} onClick={props.handleShowModal}>X</button>
 					</div>
 					{props.children}
 				</div>
