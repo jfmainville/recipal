@@ -1,9 +1,11 @@
 import React from "react";
 import classes from "./NewRecipePanel.module.scss";
+import UploadField from "../../UI/UploadField/UploadField";
 import InputField from "../../UI/InputField/InputField";
 import Button from "../../UI/Button/Button";
 
 const NewRecipePanel = (props) => {
+	const handleRecipeImageUpload = props.handleRecipeImageUpload;
 	const handleRecipeNameInput = props.handleRecipeNameInput;
 	const recipeNameInput = props.recipeNameInput;
 	const handleRecipePreparationTimeInput = props.handleRecipePreparationTimeInput;
@@ -16,6 +18,10 @@ const NewRecipePanel = (props) => {
 		<div className={classes.NewRecipePanel}>
 			<h1>New Recipe</h1>
 			<form>
+				<UploadField
+					handleUploadData={(event) => handleRecipeImageUpload(event)}
+					fileTypes="image/*"
+				/>
 				<InputField
 					handleInputSelection={handleRecipeNameInput}
 					inputType="text"

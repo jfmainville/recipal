@@ -11,6 +11,7 @@ const RecipePanel = () => {
 	const recipes = useSelector(state => state.recipe.recipes);
 	const dispatch = useDispatch();
 	const [showModal, setShowModal] = useState(false);
+	const [recipeImage, setRecipeImage] = useState("");
 	const [recipeNameInput, setRecipeNameInput] = useState("");
 	const [recipePreparationTimeInput, setRecipePreparationTimeInput] = useState("");
 	const [recipeCookTimeInput, setRecipeCookTimeInput] = useState("");
@@ -31,6 +32,10 @@ const RecipePanel = () => {
 		}
 	};
 
+	const handleRecipeImageUpload = (data) => {
+		setRecipeImage(data);
+	};
+
 	const handleRecipeNameInput = (data) => {
 		setRecipeNameInput(data);
 	};
@@ -45,10 +50,10 @@ const RecipePanel = () => {
 
 	const handleRecipeCreate = () => {
 		let data = {};
-		if (recipeNameInput !== "" && recipePreparationTimeInput !== "" && recipeCookTimeInput !== "") {
+		if (recipeImage !== "" && recipeNameInput !== "" && recipePreparationTimeInput !== "" && recipeCookTimeInput !== "") {
 			data.id = uuidv4();
 			data.name = recipeNameInput;
-			data.image = "/9j/4AAQSkZJRgABAQEAYABgAAD";
+			data.image = recipeImage;
 			data.preparation_time = recipePreparationTimeInput;
 			data.cook_time = recipeCookTimeInput;
 			dispatch(actions.createRecipe(data));
@@ -67,6 +72,7 @@ const RecipePanel = () => {
 					handleShowModal={handleShowModal}
 				>
 					<NewRecipePanel
+						handleRecipeImageUpload={handleRecipeImageUpload}
 						handleRecipeNameInput={handleRecipeNameInput}
 						recipeNameInput={recipeNameInput}
 						handleRecipePreparationTimeInput={handleRecipePreparationTimeInput}
