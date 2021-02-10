@@ -1,0 +1,19 @@
+@import "../../../sass/variables";
+
+.UploadField {
+  display: flex;
+  flex-grow: 3;
+  align-items: center;
+  height: 5rem;
+
+  .UploadFieldInput {
+    font-family: $default-font-family;
+    font-size: $default-font-size;
+    color: $color-black;
+    height: 4rem;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    outline: none;
+    width: 100%;
+  }
+}
