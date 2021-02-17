@@ -4,7 +4,7 @@ import * as actions from "../../store/actions/index";
 import classes from "./RecipePanel.module.scss";
 import RecipeCard from "./RecipeCard/RecipeCard";
 import { v4 as uuidv4 } from "uuid";
-import NewRecipePanel from "./NewRecipePanel/NewRecipePanel";
+import RecipeForm from "./RecipeForm/RecipeForm";
 import Modal from "../UI/Modal/Modal";
 
 const RecipePanel = () => {
@@ -71,7 +71,7 @@ const RecipePanel = () => {
 					showModal={showModal}
 					handleShowModal={handleShowModal}
 				>
-					<NewRecipePanel
+					<RecipeForm
 						handleRecipeImageUpload={handleRecipeImageUpload}
 						handleRecipeNameInput={handleRecipeNameInput}
 						recipeNameInput={recipeNameInput}

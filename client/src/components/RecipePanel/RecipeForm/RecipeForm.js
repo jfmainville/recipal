@@ -1,10 +1,10 @@
 import React from "react";
-import classes from "./NewRecipePanel.module.scss";
+import classes from "./RecipeForm.module.scss";
 import UploadField from "../../UI/UploadField/UploadField";
 import InputField from "../../UI/InputField/InputField";
 import Button from "../../UI/Button/Button";
 
-const NewRecipePanel = (props) => {
+const RecipeForm = (props) => {
 	const handleRecipeImageUpload = props.handleRecipeImageUpload;
 	const handleRecipeNameInput = props.handleRecipeNameInput;
 	const recipeNameInput = props.recipeNameInput;
@@ -51,4 +51,4 @@ const NewRecipePanel = (props) => {
 	);
 };
 
-export default NewRecipePanel;
+export default RecipeForm;
