@@ -56,10 +56,12 @@ const RecipePanel = () => {
 			data.image = recipeImage;
 			data.preparation_time = recipePreparationTimeInput;
 			data.cook_time = recipeCookTimeInput;
+			data.ingredients = [];
 			dispatch(actions.createRecipe(data));
-			setRecipeNameInput(null);
-			setRecipePreparationTimeInput(null);
-			setRecipeCookTimeInput(null);
+			setRecipeImage("");
+			setRecipeNameInput("");
+			setRecipePreparationTimeInput("");
+			setRecipeCookTimeInput("");
 			handleShowModal();
 		}
 	};
@@ -80,6 +82,7 @@ const RecipePanel = () => {
 						handleRecipeCookTimeInput={handleRecipeCookTimeInput}
 						recipeCookTimeInput={recipeCookTimeInput}
 						handleRecipeCreate={handleRecipeCreate}
+						recipeButtonName="New Recipe"
 					/>
 				</Modal>
 				:

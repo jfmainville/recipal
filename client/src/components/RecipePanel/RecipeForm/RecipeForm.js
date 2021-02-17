@@ -13,6 +13,7 @@ const RecipeForm = (props) => {
 	const handleRecipeCookTimeInput = props.handleRecipeCookTimeInput;
 	const recipeCookTimeInput = props.recipeCookTimeInput;
 	const handleRecipeCreate = props.handleRecipeCreate;
+	const recipeButtonName = props.recipeButtonName;
 
 	return (
 		<div className={classes.NewRecipePanel}>
@@ -45,7 +46,7 @@ const RecipeForm = (props) => {
 				buttonText="New Recipe"
 				handleButton={handleRecipeCreate}
 			>
-				New Recipe
+				{recipeButtonName}
 			</Button>
 		</div>
 	);
