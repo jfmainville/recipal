@@ -29,3 +29,16 @@ services:
       - .env
       - NODE_ENV=development
     command: [ "npm", "run", "test" ]
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - .env
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
