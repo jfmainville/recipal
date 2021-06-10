@@ -4,6 +4,8 @@ on:
     branches: [ master ]
     paths:
       - 'client/**'
+      - 'nginx/**'
+      - 'kubernetes/**'
 jobs:
   build:
     runs-on: ubuntu-latest
