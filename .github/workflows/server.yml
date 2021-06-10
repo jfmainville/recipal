@@ -2,6 +2,8 @@ name: Server
 on:
   push:
     branches: [ master ]
+    paths:
+      - 'server/**'
 jobs:
   build:
     runs-on: ubuntu-latest
