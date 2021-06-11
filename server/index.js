@@ -8,8 +8,12 @@ const port = 8000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-	res.send("Backend Server");
+app.get("/api", (req, res) => {
+	res.send("Root");
+});
+
+app.get("/api/recipe", (req, res) => {
+	res.send("Recipe");
 });
 
 app.listen(port, () => {
