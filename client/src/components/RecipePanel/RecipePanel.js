@@ -11,20 +11,27 @@ const RecipePanel = () => {
 	const recipes = useSelector(state => state.recipe.recipes);
 	const dispatch = useDispatch();
 	const [showModal, setShowModal] = useState(false);
+	const [recipeId, setRecipeId] = useState(0);
 	const [recipeImage, setRecipeImage] = useState("");
 	const [recipeNameInput, setRecipeNameInput] = useState("");
 	const [recipePreparationTimeInput, setRecipePreparationTimeInput] = useState("");
 	const [recipeCookTimeInput, setRecipeCookTimeInput] = useState("");
 
-	const handleShowModal = () => {
+	const handleShowModal = (recipe) => {
 		setShowModal(!showModal);
+		if (recipe) {
+			setRecipeId(recipe.id);
+			setRecipeNameInput(recipe.name);
+			setRecipePreparationTimeInput(recipe.preparation_time);
+			setRecipeCookTimeInput(recipe.cook_time);
+		}
 	};
 
 	useEffect(() => {
 		dispatch(actions.fetchRecipes());
 	}, []);
 
-	const handleDeleteRecipe = (recipe) => {
+	const handleRecipeDelete = (recipe) => {
 		let data = {};
 		if (recipe.id) {
 			data = recipe.id;
@@ -48,6 +55,27 @@ const RecipePanel = () => {
 		setRecipeCookTimeInput(data);
 	};
 
+	const handleRecipeUpdate = () => {
+		let data = {};
+
+		if (recipeId) {
+			data.id = recipeId;
+			const recipeData = recipes.find(recipe => recipe.id === data.id);
+
+			data.image = recipeImage ? recipeImage : recipeData.image;
+			data.name = recipeNameInput ? recipeNameInput : recipeData.name;
+			data.preparation_time = recipePreparationTimeInput ? recipePreparationTimeInput : recipeData.preparation_time;
+			data.cook_time = recipeCookTimeInput ? recipeCookTimeInput : recipeData.cook_time;
+
+			dispatch(actions.updateRecipe(data));
+			setRecipeImage("");
+			setRecipeNameInput("");
+			setRecipePreparationTimeInput("");
+			setRecipeCookTimeInput("");
+			handleShowModal();
+		}
+	};
+
 	const handleRecipeCreate = () => {
 		let data = {};
 		if (recipeImage !== "" && recipeNameInput !== "" && recipePreparationTimeInput !== "" && recipeCookTimeInput !== "") {
@@ -68,32 +96,54 @@ const RecipePanel = () => {
 
 	return (
 		<React.Fragment>
-			{showModal ?
-				<Modal
-					showModal={showModal}
-					handleShowModal={handleShowModal}
-				>
-					<RecipeForm
-						handleRecipeImageUpload={handleRecipeImageUpload}
-						handleRecipeNameInput={handleRecipeNameInput}
-						recipeNameInput={recipeNameInput}
-						handleRecipePreparationTimeInput={handleRecipePreparationTimeInput}
-						recipePreparationTimeInput={recipePreparationTimeInput}
-						handleRecipeCookTimeInput={handleRecipeCookTimeInput}
-						recipeCookTimeInput={recipeCookTimeInput}
-						handleRecipeCreate={handleRecipeCreate}
-						recipeButtonName="New Recipe"
-					/>
-				</Modal>
-				:
-				null}
 			<div className={classes.RecipeCard}>
 				{recipes.map(recipe => (
-					<RecipeCard
-						key={recipe.id}
-						recipe={recipe}
-						handleDeleteRecipe={handleDeleteRecipe}
-					/>
+					<React.Fragment key={recipe.id}>
+						{showModal && recipeId === recipe.id ?
+							<Modal
+								showModal={showModal}
+								handleShowModal={handleShowModal}
+							>
+								<RecipeForm
+									recipe={recipe}
+									handleRecipeImageUpload={handleRecipeImageUpload}
+									handleRecipeNameInput={handleRecipeNameInput}
+									recipeNameInput={recipeNameInput}
+									handleRecipePreparationTimeInput={handleRecipePreparationTimeInput}
+									recipePreparationTimeInput={recipePreparationTimeInput}
+									handleRecipeCookTimeInput={handleRecipeCookTimeInput}
+									recipeCookTimeInput={recipeCookTimeInput}
+									handleRecipeOperation={handleRecipeUpdate}
+									recipeButtonName="Update Recipe"
+								/>
+							</Modal>
+							:
+							showModal && !recipeId ?
+								<Modal
+									showModal={showModal}
+									handleShowModal={handleShowModal}
+								>
+									<RecipeForm
+										handleRecipeImageUpload={handleRecipeImageUpload}
+										handleRecipeNameInput={handleRecipeNameInput}
+										recipeNameInput={recipeNameInput}
+										handleRecipePreparationTimeInput={handleRecipePreparationTimeInput}
+										recipePreparationTimeInput={recipePreparationTimeInput}
+										handleRecipeCookTimeInput={handleRecipeCookTimeInput}
+										recipeCookTimeInput={recipeCookTimeInput}
+										handleRecipeOperation={handleRecipeCreate}
+										recipeButtonName="New Recipe"
+									/>
+								</Modal>
+								:
+								null}
+						<RecipeCard
+							key={recipe.id}
+							recipe={recipe}
+							handleShowModal={handleShowModal}
+							handleRecipeDelete={handleRecipeDelete}
+						/>
+					</React.Fragment>
 				))}
 				<button
 					onClick={handleShowModal}
