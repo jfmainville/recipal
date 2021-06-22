@@ -17,7 +17,7 @@ const inputField = props => {
 			<input
 				className={classes.InputFieldInput}
 				type={inputType}
-				value={inputData}
+				defaultValue={inputData}
 				onChange={(event) => handleInputData(event)}
 				placeholder={placeHolder}
 			/>
