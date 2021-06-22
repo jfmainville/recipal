@@ -24,7 +24,7 @@ const navbar = () => {
 					buttonText="Search"
 				/>
 			</form>
-			<div className={classes.Logout}>
+			<div className={classes.Navigation}>
 				<NavLink
 					activeClassName={classes.NavigationItemLinkActive}
 					className={classes.NavigationItemLink}

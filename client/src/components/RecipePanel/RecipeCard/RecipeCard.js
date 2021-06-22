@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const recipeCard = props => {
 	const recipe = props.recipe;
-	const handleDeleteRecipe = props.handleDeleteRecipe;
+	const handleRecipeDelete = props.handleRecipeDelete;
 
 	return (
 		<React.Fragment>
@@ -18,12 +18,20 @@ const recipeCard = props => {
 				</NavLink>
 				<div className={classes.RecipeCardInformation}>
 					<p>{recipe.name}</p>
-					<button
-						id={recipe.id}
-						onClick={() => handleDeleteRecipe(recipe)}
-					>
-						X
-					</button>
+					<div className={classes.RecipeCardInformationButton}>
+						<button
+							id={recipe.id}
+							onClick={() => props.handleShowModal(recipe)}
+						>
+							Edit
+						</button>
+						<button
+							id={recipe.id}
+							onClick={() => handleRecipeDelete(recipe)}
+						>
+							X
+						</button>
+					</div>
 				</div>
 			</div>
 		</React.Fragment>

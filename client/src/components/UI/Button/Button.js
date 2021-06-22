@@ -3,7 +3,7 @@ import classes from "./Button.module.scss";
 
 const button = props => {
 	const item = props.item;
-	const buttonText = props.buttonText;
+	const buttonText = props.children;
 	return (
 		<button
 			className={classes.Button}

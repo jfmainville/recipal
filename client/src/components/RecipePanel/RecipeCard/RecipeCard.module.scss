@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: $color-primary;
-    height: 3rem;
+    height: 5rem;
     width: 100%;
 
     p {
@@ -36,10 +36,10 @@
 
     button {
       width: 3rem;
-      height: 3rem;
+      height: 100%;
       border: none;
       color: $color-white;
-      background-color: $color-secondary;
+      background-color: $color-primary;
       outline: none;
       cursor: pointer;
 

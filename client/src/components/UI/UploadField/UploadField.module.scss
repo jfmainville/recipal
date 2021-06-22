@@ -1,16 +1,15 @@
 @import "../../../sass/variables";
 
-.InputField {
+.UploadField {
   display: flex;
   flex-grow: 3;
   align-items: center;
   height: 5rem;
 
-  .InputFieldInput {
+  .UploadFieldInput {
     font-family: $default-font-family;
     font-size: $default-font-size;
     color: $color-black;
-    border: 1px solid $color-primary;
     height: 4rem;
     padding-left: 1rem;
     margin-left: 1rem;
