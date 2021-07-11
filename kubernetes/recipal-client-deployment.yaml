@@ -16,7 +16,6 @@ spec:
       containers:
         - name: recipal-client
           image: registry.digitalocean.com/docrnuagirprod/recipal-client:latest
-          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 3000
