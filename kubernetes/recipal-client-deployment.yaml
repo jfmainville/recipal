@@ -7,6 +7,7 @@ spec:
   selector:
     matchLabels:
       app: recipal-client
+      environment: production
   template:
     metadata:
       labels:
