@@ -21,6 +21,6 @@ spec:
           resources:
             limits:
               memory: "50Mi"
-              cpu: "250m"
+              cpu: "10m"
       imagePullSecrets:
         - name: docrnuagirprod
