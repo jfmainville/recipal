@@ -9,7 +9,6 @@ spec:
       app: recipal-server
   template:
     metadata:
-      namespace: recipal
       labels:
         app: recipal-server
     spec:
