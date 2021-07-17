@@ -16,14 +16,6 @@ const navbar = () => {
 					Recipal
 				</NavLink>
 			</div>
-			<form className={classes.SearchBar}>
-				<InputField
-					placeHolder="carbonara, steak..."
-				/>
-				<Button
-					buttonText="Search"
-				/>
-			</form>
 			<div className={classes.Navigation}>
 				<NavLink
 					activeClassName={classes.NavigationItemLinkActive}
